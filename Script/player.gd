@@ -30,7 +30,6 @@ func actualizar_animacion(dir: Vector2):
 		sprite.play("run_" + ultima_direccion)
 	else:
 		sprite.play("Idle_" + ultima_direccion)
-
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # La tecla ESC por defecto

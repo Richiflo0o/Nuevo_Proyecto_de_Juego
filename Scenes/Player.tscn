@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://du5gauvxeyfja"]
+[gd_scene format=3 uid="uid://du5gauvxeyfja"]
 
 [ext_resource type="Script" uid="uid://vc7siacqht2j" path="res://Script/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bk1xe2rdfkq8h" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Char_Sprites/char_idle_down_anim_strip_6.png" id="2_megsn"]
@@ -225,7 +225,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle_down",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -391,20 +391,20 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
 radius = 4.0
-height = 16.0
+height = 14.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=422160145 groups=["Player"]]
 script = ExtResource("1_kyqiw")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1989618632]
 sprite_frames = SubResource("SpriteFrames_o3h8g")
 animation = &"Idle_down"
 autoplay = "Idle_up"
-frame_progress = 0.903912
+frame_progress = 0.8972199
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312087906]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_kyqiw")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1440477427]
 zoom = Vector2(5, 5)
