@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed := 100.0
 @onready var sprite = $Sprite2D
+@onready var ray = $RayCast2D
 
 # Guardamos la última dirección para saber hacia dónde mirar cuando se detiene
 var ultima_direccion := "down"
@@ -16,6 +17,7 @@ func _physics_process(_delta):
 	
 	# 3. Gestionar Animaciones
 	actualizar_animacion(direction)
+	
 
 func actualizar_animacion(dir: Vector2):
 	# Usamos un pequeño margen (0.1) en lugar de 0 para mayor estabilidad
@@ -34,3 +36,8 @@ func actualizar_animacion(dir: Vector2):
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # La tecla ESC por defecto
 		get_tree().change_scene_to_file("res://Scenes/MenuInicio.tscn")
+	if event.is_action_pressed("interactuar"): # Define "E" en el Input Map
+		if ray.is_colliding():
+			var objeto = ray.get_collider()
+			if objeto.has_method("interactuar"):
+				objeto.interactuar()

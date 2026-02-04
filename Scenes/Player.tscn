@@ -389,22 +389,27 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_megsn"]
 radius = 4.0
 height = 14.0
 
 [node name="Player" type="CharacterBody2D" unique_id=422160145 groups=["Player"]]
+collision_layer = 2
+collision_mask = 61
 script = ExtResource("1_kyqiw")
+speed = null
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1989618632]
 sprite_frames = SubResource("SpriteFrames_o3h8g")
 animation = &"Idle_down"
 autoplay = "Idle_up"
-frame_progress = 0.8972199
+frame_progress = 0.73224354
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1312087906]
 position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_kyqiw")
+shape = SubResource("CapsuleShape2D_megsn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1440477427]
 zoom = Vector2(5, 5)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1196850225]
