@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddnp686e6nbmq"]
+[gd_scene format=3 uid="uid://ddnp686e6nbmq"]
 
 [ext_resource type="Script" uid="uid://xc6efmdx3iw3" path="res://Script/MenuInicio.gd" id="1_4b0mw"]
+[ext_resource type="Texture2D" uid="uid://danqy6mfotpto" path="res://Texturas/ChatGPT Image 4 feb 2026, 01_52_14 a.m..png" id="2_l5kx3"]
 
-[node name="MenuInicio" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haodl"]
+bg_color = Color(0.9882353, 0.6392157, 0.06666667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w01c"]
+bg_color = Color(0.9882353, 0.6392157, 0.06666667, 1)
+
+[node name="MenuInicio" type="Control" unique_id=1999542080]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,25 +18,33 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4b0mw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1993306319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l5kx3")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1329034454]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 342.0
+offset_top = 455.0
+offset_right = 754.0
+offset_bottom = 647.0
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BotonJugar" type="Button" parent="VBoxContainer"]
+[node name="BotonJugar" type="Button" parent="VBoxContainer" unique_id=502187924]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_haodl")
 text = "JUGAR"
 
-[node name="BotonSalir" type="Button" parent="VBoxContainer"]
+[node name="BotonSalir" type="Button" parent="VBoxContainer" unique_id=205285837]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_2w01c")
 text = "SALIR"
