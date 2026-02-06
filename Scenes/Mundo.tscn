@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://h8twyd2shiwc" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/water_tile_anim_strip_8.png" id="3_s44lv"]
 [ext_resource type="PackedScene" uid="uid://y8ar0p4q0lav" path="res://Scenes/Decoraciones/Arbusto.tscn" id="4_v2lyq"]
 [ext_resource type="PackedScene" uid="uid://dhngwlm1onk1c" path="res://Scenes/Decoraciones/Arbol.tscn" id="5_yag4v"]
+[ext_resource type="PackedScene" uid="uid://vurxh64qptto" path="res://Scenes/Decoraciones/TerminalPOO.tscn" id="6_o2bb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yag4v"]
 texture = ExtResource("3_s44lv")
@@ -496,7 +497,6 @@ tile_set = SubResource("TileSet_v2lyq")
 
 [node name="Player" parent="." unique_id=818960866 instance=ExtResource("2_s44lv")]
 position = Vector2(136, 73)
-speed = 100.0
 
 [node name="TileMapLayer" parent="." unique_id=1919236177 instance=ExtResource("4_v2lyq")]
 position = Vector2(290, 3)
@@ -533,3 +533,9 @@ position = Vector2(36, 222)
 
 [node name="Arbol6" parent="." unique_id=1836601600 instance=ExtResource("5_yag4v")]
 position = Vector2(-12, 71)
+
+[node name="Arbol7" parent="." unique_id=1268927278 instance=ExtResource("5_yag4v")]
+position = Vector2(404, 233)
+
+[node name="TerminalPOO" parent="." unique_id=1514370293 instance=ExtResource("6_o2bb6")]
+position = Vector2(313, 199)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://vurxh64qptto"]
+
+[ext_resource type="Texture2D" uid="uid://cva4jdoora7l6" path="res://Assets/Propios/Terminal.png" id="1_5c5nb"]
+[ext_resource type="Script" uid="uid://b7iblsh8l63wl" path="res://Script/terminal_poo.gd" id="1_m5faa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5faa"]
+size = Vector2(10, 10)
+
+[node name="TerminalPOO" type="StaticBody2D" unique_id=1514370293]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_m5faa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779975990]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_5c5nb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1982494565]
+shape = SubResource("RectangleShape2D_m5faa")

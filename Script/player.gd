@@ -16,9 +16,19 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	# 3. Gestionar Animaciones
+	actualizar_direccion_rayo(direction)
 	actualizar_animacion(direction)
 	
+	# Multiplicamos por 25 o 30 para darle alcance frente al personaje
+	if direction.length() > 0:
+		ray.target_position = direction * 25
 
+func actualizar_direccion_rayo(dir: Vector2):
+	# Si el jugador se está moviendo, el rayo apunta en esa dirección
+	if dir.length() > 0:
+		ray.target_position = dir.normalized() * 30
+	# Si está quieto, el rayo ya se queda apuntando a la última dirección
+	# porque no lo reseteamos a (0,0).
 func actualizar_animacion(dir: Vector2):
 	# Usamos un pequeño margen (0.1) en lugar de 0 para mayor estabilidad
 	if dir.length() > 0.1:
