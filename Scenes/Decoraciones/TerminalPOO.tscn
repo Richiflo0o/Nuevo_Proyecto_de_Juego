@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cva4jdoora7l6" path="res://Assets/Propios/Terminal.png" id="1_5c5nb"]
 [ext_resource type="Script" uid="uid://b7iblsh8l63wl" path="res://Script/terminal_poo.gd" id="1_m5faa"]
+[ext_resource type="Script" uid="uid://4joe33hvcs2o" path="res://Script/terminal_ui.gd" id="3_7rbib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5faa"]
 size = Vector2(10, 10)
@@ -17,3 +18,56 @@ texture = ExtResource("1_5c5nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1982494565]
 shape = SubResource("RectangleShape2D_m5faa")
+
+[node name="TerminalUI" type="CanvasLayer" parent="." unique_id=1125968989]
+script = ExtResource("3_7rbib")
+
+[node name="Panel" type="Panel" parent="TerminalUI" unique_id=1230982312]
+offset_right = 40.0
+offset_bottom = 44.0
+
+[node name="PreguntaLabel" type="Label" parent="TerminalUI/Panel" unique_id=580209134]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TipoA" type="VBoxContainer" parent="TerminalUI/Panel" unique_id=2026415583]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 44.0
+
+[node name="Opcion0" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1157351222]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="Opcion1" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1201652875]
+layout_mode = 2
+
+[node name="Opcion2" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=829389089]
+layout_mode = 2
+
+[node name="Opcion3" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1581256458]
+layout_mode = 2
+
+[node name="TipoB" type="GridContainer" parent="TerminalUI/Panel" unique_id=2029018846]
+layout_direction = 2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 44.0
+columns = 2
+
+[node name="FeedbackLabel" type="Label" parent="TerminalUI/Panel" unique_id=1863905124]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+
+[node name="CerrarBtn" type="Button" parent="TerminalUI/Panel" unique_id=2146431582]
+layout_mode = 0
+offset_right = 97.0
+offset_bottom = 31.0
+text = "Cerrar [Esc]"
+alignment = 0
+autowrap_trim_flags = 0
