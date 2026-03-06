@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Script/game_manager.gd"
+GeminiService="*uid://c4tdf0l28v6fw"
 
 [display]
 
