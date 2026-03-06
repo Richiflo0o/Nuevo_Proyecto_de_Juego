@@ -1,7 +1,22 @@
+# terminal_poo.gd
 extends StaticBody2D
 
-func interactuar():
-	print("Abriendo terminal...")
-	# Aquí es donde llamarás a la función de la API de Gemini
-	# para generar la pregunta dinámica.
-	# Por ahora, puedes disparar una señal al CanvasLayer (UI).
+signal resuelto
+
+@onready var terminal_ui = $TerminalUI
+
+var _resuelta := false
+
+func _ready() -> void:
+	if terminal_ui:
+		terminal_ui.respuesta_correcta.connect(_on_resuelto)
+
+func interactuar() -> void:
+	if _resuelta or not terminal_ui:
+		return
+	terminal_ui.abrir()
+
+func _on_resuelto() -> void:
+	_resuelta = true
+	terminal_ui.respuesta_correcta.disconnect(_on_resuelto)
+	resuelto.emit()
