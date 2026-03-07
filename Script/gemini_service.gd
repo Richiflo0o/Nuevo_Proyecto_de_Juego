@@ -1,31 +1,45 @@
 # gemini_service.gd
-# Agrégalo como Autoload en Project > Project Settings > Autoload
-# Nombre: GeminiService
+# Autoload — nombre: GeminiService
 
 extends Node
 
-# ── PON TU API KEY AQUÍ ───────────────────────────────────────────────────────
-const API_KEY := "AIzaSyAL8rWgpycpGK77WGcMlGosL0qq0hImD5w"
-const API_URL := "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY
+const API_KEY := Config.GEMINI_API_KEY
+const API_URL := "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY
 
 signal pregunta_lista(datos: Dictionary)
 signal error_api(mensaje: String)
 
-# ── Solicitar pregunta a Gemini ───────────────────────────────────────────────
+# Guardamos el tipo de pregunta como variable para no necesitar .bind()
+var _tipo_actual := ""
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func solicitar_pregunta(tipo: String) -> void:
+	_tipo_actual = tipo
 	var prompt := _construir_prompt(tipo)
 	var body := JSON.stringify({
 		"contents": [{"parts": [{"text": prompt}]}],
 		"generationConfig": {"temperature": 0.7}
 	})
-
 	var headers := ["Content-Type: application/json"]
-	var http := HTTPRequest.new()
-	add_child(http)
-	http.request_completed.connect(_on_respuesta.bind(http, tipo))
-	http.request(API_URL, headers, HTTPClient.METHOD_POST, body)
 
-# ── Construir el prompt según el tipo ────────────────────────────────────────
+	if not has_node("HTTPRequest"):
+		var nodo_http := HTTPRequest.new()
+		nodo_http.name = "HTTPRequest"
+		add_child(nodo_http)
+
+	var http : HTTPRequest = $HTTPRequest
+	http.process_mode = Node.PROCESS_MODE_ALWAYS  # ← AGREGA ESTA LÍNEA
+
+	if http.request_completed.is_connected(_on_respuesta):
+		http.request_completed.disconnect(_on_respuesta)
+	http.request_completed.connect(_on_respuesta)
+
+	var error := http.request(API_URL, headers, HTTPClient.METHOD_POST, body)
+	if error != OK:
+		emit_signal("error_api", "Error al enviar petición: %d" % error)
+
 func _construir_prompt(tipo: String) -> String:
 	if tipo == "multiple":
 		return """Eres un generador de preguntas para un videojuego educativo sobre Programación Orientada a Objetos (POO).
@@ -42,7 +56,6 @@ Responde ÚNICAMENTE con este JSON exacto, sin explicaciones ni markdown:
 
 Donde "correcta" es el índice (0-3) de la respuesta correcta.
 El nivel de dificultad debe ser para principiantes."""
-
 	else:
 		return """Eres un generador de preguntas para un videojuego educativo sobre Programación Orientada a Objetos (POO).
 
@@ -53,17 +66,17 @@ Responde ÚNICAMENTE con este JSON exacto, sin explicaciones ni markdown:
   "tipo": "drag",
   "pregunta": "Arrastra cada concepto a su definición correcta:",
   "pares": [
-	{"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
-	{"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
+    {"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
+    {"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
   ]
 }
 
 Los conceptos deben ser de: clase, objeto, atributo, método, encapsulamiento, instancia, herencia.
 Las definiciones deben ser cortas (máximo 5 palabras)."""
 
-# ── Procesar respuesta de la API ──────────────────────────────────────────────
-func _on_respuesta(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray, http: HTTPRequest, _tipo: String) -> void:
-	http.queue_free()
+func _on_respuesta(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	# Desconectar para no acumular conexiones
+	$HTTPRequest.request_completed.disconnect(_on_respuesta)
 
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
 		emit_signal("error_api", "Error HTTP: %d" % response_code)
@@ -76,12 +89,8 @@ func _on_respuesta(result: int, response_code: int, _headers: PackedStringArray,
 		emit_signal("error_api", "Error parseando respuesta de Gemini")
 		return
 
-	# Extraer el texto generado por Gemini
-	var contenido: String = json_response["candidates"][0]["content"]["parts"][0]["text"]
-
-	# Limpiar posibles backticks de markdown que Gemini a veces incluye
-	contenido = contenido.strip_edges()
-	contenido = contenido.replace("```json", "").replace("```", "").strip_edges()
+	var contenido : String = json_response["candidates"][0]["content"]["parts"][0]["text"]
+	contenido = contenido.strip_edges().replace("```json", "").replace("```", "").strip_edges()
 
 	var datos = JSON.parse_string(contenido)
 	if not datos:
