@@ -18,6 +18,7 @@ func abrir() -> void:
 	visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
 
+
 	# Opción B (si tienes AnimatedSprite2D): reproducir animación
 	# $AnimatedSprite2D.play("abrir")
 	# await $AnimatedSprite2D.animation_finished
