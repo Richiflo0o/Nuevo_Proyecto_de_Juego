@@ -6,7 +6,7 @@ func _ready():
 	$VBoxContainer/BotonSalir.pressed.connect(_on_salir_pressed)
 
 func _on_jugar_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Mundo.tscn")
+	GameManager.nueva_partida()  # en lugar de change_scene_to_file directo
 	
 func _on_salir_pressed():
 	get_tree().quit() # Cierra el juego

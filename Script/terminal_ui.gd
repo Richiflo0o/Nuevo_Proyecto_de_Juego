@@ -17,7 +17,9 @@ signal respuesta_correcta
 signal terminal_cerrada
 
 # ── Constantes ────────────────────────────────────────────────────────────────
-const PANEL_SIZE := Vector2(500, 400)
+const PANEL_SIZE          := Vector2(500, 400)
+const DELAY_PRECARGA      := 4.0   # segundos entre peticiones (evita 429)
+const DELAY_REINTENTO_429 := 6.0   # espera antes de reintentar tras rate limit
 
 # Banco local de preguntas (fallback si Gemini falla)
 const PREGUNTAS := [
@@ -106,18 +108,21 @@ const PREGUNTAS := [
 ]
 
 # ── Estado ────────────────────────────────────────────────────────────────────
-var _pregunta_actual    : Dictionary = {}
-var _pregunta_precargada: Dictionary = {}
-var _respondida         := false
-var _cargando           := false
+var _pregunta_actual     : Dictionary = {}
+var _pregunta_precargada : Dictionary = {}
+var _respondida          := false
+var _cargando            := false
+var _precarga_pendiente  := false   # evita múltiples precargas simultáneas
 
 # Drag & drop
-var _drag_concepto  : String     = ""
-var _zonas          : Array      = []
-var _zona_asignada  : Dictionary = {}
+var _drag_concepto : String     = ""
+var _zonas         : Array      = []
+var _zona_asignada : Dictionary = {}
 
 # ── Ciclo de vida ─────────────────────────────────────────────────────────────
 func _ready() -> void:
+	print("=== TERMINAL UI READY ===")
+	print("Panel: ", $Panel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 	_centrar_panel()
@@ -131,28 +136,33 @@ func _input(event: InputEvent) -> void:
 
 # ── API pública ───────────────────────────────────────────────────────────────
 func abrir() -> void:
+	print("=== ABRIR LLAMADO ===")
 	_respondida = false
 	visible = true
 	get_tree().paused = true
+	print("Visible: ", visible, " | Precargada vacía: ", _pregunta_precargada.is_empty())
 
 	if not _pregunta_precargada.is_empty():
-		# Mostrar instantáneamente la pregunta precargada
-		_pregunta_actual = _pregunta_precargada
+		print("Usando pregunta precargada")
+		_pregunta_actual     = _pregunta_precargada
 		_pregunta_precargada = {}
 		_feedback_label.text = ""
 		_mostrar_pregunta(_pregunta_actual)
 		_precargar_siguiente()
 		return
 
-	# Sin precarga: pedir a Gemini
+	print("Pidiendo a Gemini...")
 	_cargando = true
 	_feedback_label.modulate = Color.WHITE
 	_tipo_a.visible = false
 	_tipo_b.visible = false
 	_pregunta_label.text = ""
 	_animar_carga()
+	print("Conectando Gemini...")
 	_conectar_gemini()
+	print("Solicitando pregunta...")
 	GeminiService.solicitar_pregunta("multiple" if randf() > 0.4 else "drag")
+	print("Solicitud enviada")
 
 # ── Gemini ────────────────────────────────────────────────────────────────────
 func _conectar_gemini() -> void:
@@ -178,15 +188,39 @@ func _on_pregunta_lista(datos: Dictionary) -> void:
 func _on_error_api(mensaje: String) -> void:
 	_desconectar_gemini()
 	_cargando = false
+
+	if "429" in mensaje:
+		# Rate limit: esperar y reintentar una sola vez
+		push_warning("Rate limit Gemini (429) — reintentando en %.0fs" % DELAY_REINTENTO_429)
+		_feedback_label.text     = "⏳ Servicio ocupado, reintentando..."
+		_feedback_label.modulate = Color(1, 0.8, 0.3)
+		await get_tree().create_timer(DELAY_REINTENTO_429).timeout
+		if not visible:
+			return  # el jugador cerró la terminal mientras esperaba
+		_conectar_gemini()
+		_cargando = true
+		_animar_carga()
+		GeminiService.solicitar_pregunta("multiple" if randf() > 0.4 else "drag")
+		return
+
+	# Cualquier otro error: fallback inmediato al banco local
 	push_warning("Gemini falló: %s — usando banco local" % mensaje)
 	_pregunta_actual = PREGUNTAS[randi() % PREGUNTAS.size()]
 	_feedback_label.text = ""
 	_mostrar_pregunta(_pregunta_actual)
 
 func _precargar_siguiente() -> void:
-	var tipo := "multiple" if randf() > 0.4 else "drag"
+	# No precargar si ya hay una en camino o una lista esperando
+	if _precarga_pendiente or not _pregunta_precargada.is_empty():
+		return
+	_precarga_pendiente = true
+	# Espera antes de pedir para no saturar la API
+	await get_tree().create_timer(DELAY_PRECARGA).timeout
+	_precarga_pendiente = false
+	if not _pregunta_precargada.is_empty():
+		return  # ya se llenó mientras esperábamos
 	GeminiService.pregunta_lista.connect(_on_precarga_lista, CONNECT_ONE_SHOT)
-	GeminiService.solicitar_pregunta(tipo)
+	GeminiService.solicitar_pregunta("multiple" if randf() > 0.4 else "drag")
 
 func _on_precarga_lista(datos: Dictionary) -> void:
 	_pregunta_precargada = datos
