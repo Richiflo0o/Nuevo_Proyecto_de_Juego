@@ -47,7 +47,11 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # La tecla ESC por defecto
 		get_tree().change_scene_to_file("res://Scenes/MenuInicio.tscn")
 	if event.is_action_pressed("interactuar"): # Define "E" en el Input Map
+		print("=== TECLA E PRESIONADA ===")
 		if ray.is_colliding():
+			print("Ray colisionando con: ", ray.get_collider())
 			var objeto = ray.get_collider()
 			if objeto.has_method("interactuar"):
 				objeto.interactuar()
+		else:
+			print("Ray NO está colisionando")

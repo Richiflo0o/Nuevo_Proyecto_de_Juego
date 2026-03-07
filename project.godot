@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://Script/game_manager.gd"
 GeminiService="*uid://c4tdf0l28v6fw"
+Config="*uid://1yfiikbg0xcf"
 
 [display]
 
