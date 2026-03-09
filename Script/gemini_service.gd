@@ -1,6 +1,6 @@
 # gemini_service.gd
 # Autoload — nombre: GeminiService
-
+#xd
 extends Node
 
 const API_KEY := Config.GEMINI_API_KEY
