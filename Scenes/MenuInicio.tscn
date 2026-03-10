@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddnp686e6nbmq"]
 
 [ext_resource type="Script" uid="uid://xc6efmdx3iw3" path="res://Script/MenuInicio.gd" id="1_4b0mw"]
-[ext_resource type="Texture2D" uid="uid://danqy6mfotpto" path="res://Texturas/ChatGPT Image 4 feb 2026, 01_52_14 a.m..png" id="2_l5kx3"]
+[ext_resource type="Texture2D" path="res://Texturas/ChatGPT Image 4 feb 2026, 01_52_14 a.m..png" id="2_l5kx3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_haodl"]
 bg_color = Color(0.9882353, 0.6392157, 0.06666667, 1)
