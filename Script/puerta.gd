@@ -1,25 +1,49 @@
 # puerta.gd
-# Nodo: StaticBody2D (o AnimatableBody2D si quieres animarla)
+# Nodo: StaticBody2D
 #
-# Árbol de nodos sugerido:
+# Árbol de nodos:
 # Puerta (StaticBody2D)
 # ├── Sprite2D
-# └── CollisionShape2D
+# ├── CollisionShape2D
+# └── IndicadorLabel (Label) ← "[E] Entrar" — visible solo cuando está abierta
 
 extends StaticBody2D
 
+const ESCENA_DESTINO := "res://Scenes/laberinto.tscn"
+
 var _abierta := false
 
-func abrir() -> void:
-	if _abierta:
-		return
-	_abierta = true
-	# Opción A: desaparecer (simple)
+var indicador = null
+
+func _ready() -> void:
+	# La puerta empieza cerrada e invisible
 	visible = false
+	if indicador:
+		indicador.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
 
+# Llamado desde mundo_inicial.gd cuando se completan los objetivos
+func abrir() -> void:
+	print("=== PUERTA.ABRIR() ===")
+	if _abierta:
+		print("Ya estaba abierta")
+		return
+	_abierta = true
+	visible = true
+	print("Puerta visible: ", visible)
+	modulate.a = 0.0
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 0.8)
+	await tween.finished
 
-	# Opción B (si tienes AnimatedSprite2D): reproducir animación
-	# $AnimatedSprite2D.play("abrir")
-	# await $AnimatedSprite2D.animation_finished
-	# $CollisionShape2D.set_deferred("disabled", true)
+	# Habilitar colisión e indicador
+	$CollisionShape2D.set_deferred("disabled", false)
+	if indicador:
+		indicador.visible = true
+
+# Llamado desde player.gd al presionar E cerca de la puerta
+func interactuar() -> void:
+	if not _abierta:
+		return
+	GameManager.sala_actual = 1  # marcar que vamos al laberinto
+	get_tree().change_scene_to_file(ESCENA_DESTINO)

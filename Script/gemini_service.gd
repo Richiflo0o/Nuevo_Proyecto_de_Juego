@@ -1,19 +1,25 @@
 # gemini_service.gd
 # Autoload — nombre: GeminiService
-#xd
+
 extends Node
 
 const API_KEY := Config.GEMINI_API_KEY
-const API_URL := "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY
+const API_URL := "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + API_KEY
 
 signal pregunta_lista(datos: Dictionary)
 signal error_api(mensaje: String)
 
-# Guardamos el tipo de pregunta como variable para no necesitar .bind()
 var _tipo_actual := ""
+var _http        : HTTPRequest
 
 func _ready() -> void:
+	# Crear HTTPRequest aquí para que tenga PROCESS_MODE_ALWAYS
+	# antes de que el árbol pueda pausarse
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_http = HTTPRequest.new()
+	_http.name = "HTTPRequest"
+	_http.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_http)
 
 func solicitar_pregunta(tipo: String) -> void:
 	_tipo_actual = tipo
@@ -24,19 +30,11 @@ func solicitar_pregunta(tipo: String) -> void:
 	})
 	var headers := ["Content-Type: application/json"]
 
-	if not has_node("HTTPRequest"):
-		var nodo_http := HTTPRequest.new()
-		nodo_http.name = "HTTPRequest"
-		add_child(nodo_http)
+	if _http.request_completed.is_connected(_on_respuesta):
+		_http.request_completed.disconnect(_on_respuesta)
+	_http.request_completed.connect(_on_respuesta)
 
-	var http : HTTPRequest = $HTTPRequest
-	http.process_mode = Node.PROCESS_MODE_ALWAYS  # ← AGREGA ESTA LÍNEA
-
-	if http.request_completed.is_connected(_on_respuesta):
-		http.request_completed.disconnect(_on_respuesta)
-	http.request_completed.connect(_on_respuesta)
-
-	var error := http.request(API_URL, headers, HTTPClient.METHOD_POST, body)
+	var error := _http.request(API_URL, headers, HTTPClient.METHOD_POST, body)
 	if error != OK:
 		emit_signal("error_api", "Error al enviar petición: %d" % error)
 
@@ -66,8 +64,8 @@ Responde ÚNICAMENTE con este JSON exacto, sin explicaciones ni markdown:
   "tipo": "drag",
   "pregunta": "Arrastra cada concepto a su definición correcta:",
   "pares": [
-	{"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
-	{"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
+    {"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
+    {"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
   ]
 }
 
@@ -75,8 +73,8 @@ Los conceptos deben ser de: clase, objeto, atributo, método, encapsulamiento, i
 Las definiciones deben ser cortas (máximo 5 palabras)."""
 
 func _on_respuesta(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	# Desconectar para no acumular conexiones
-	$HTTPRequest.request_completed.disconnect(_on_respuesta)
+	print("=== _on_respuesta DISPARADO result=", result, " code=", response_code)
+	_http.request_completed.disconnect(_on_respuesta)
 
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
 		emit_signal("error_api", "Error HTTP: %d" % response_code)

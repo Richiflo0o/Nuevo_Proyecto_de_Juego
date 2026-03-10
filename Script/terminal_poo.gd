@@ -24,7 +24,10 @@ func interactuar() -> void:
 	terminal_ui.abrir()
 
 func _on_resuelto() -> void:
+	print("=== TERMINAL_POO: _on_resuelto llamado ===")
 	_resuelta = true
-	GameManager.registrar_terminal(name)  # usa el nombre del nodo como ID
+	GameManager.registrar_terminal(name)
 	terminal_ui.respuesta_correcta.disconnect(_on_resuelto)
+	print("Emitiendo señal resuelto...")
 	resuelto.emit()
+	print("Señal emitida OK")
