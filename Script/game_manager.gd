@@ -18,10 +18,10 @@ const PUNTOS_POR_ENEMIGO  := 50
 
 # Rutas de las salas en orden secuencial
 # Agrégalas aquí conforme las vayas creando
-const SALAS := [
-	"res://Scenes/Salas/Sala1.tscn",
-	"res://Scenes/Salas/Sala2.tscn",
-	"res://Scenes/Salas/Sala3.tscn",
+
+const SALAS = [
+"res://Scenes/Salas/Mundo.tscn",
+"res://Scenes/Salas/laberinto.tscn"
 ]
 
 # ── Estado persistente entre salas ────────────────────────────────────────────
@@ -85,6 +85,7 @@ func terminal_resuelta(id_terminal: String) -> bool:
 
 # ── Privados ──────────────────────────────────────────────────────────────────
 func _cargar_sala_actual() -> void:
+
 	get_tree().change_scene_to_file(SALAS[sala_actual])
 
 func _reiniciar_sala() -> void:
