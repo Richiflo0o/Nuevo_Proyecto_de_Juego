@@ -31,9 +31,10 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -10.0
-offset_right = -727.0
-offset_bottom = -383.0
+offset_left = -3.0
+offset_top = -6.0
+offset_right = -600.0
+offset_bottom = -332.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
@@ -41,10 +42,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
 [node name="PreguntaLabel" type="Label" parent="TerminalUI/Panel" unique_id=580209134]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 94.0
-offset_top = 58.0
-offset_right = 327.0
-offset_bottom = 104.0
+offset_left = 176.0
+offset_top = 57.0
+offset_right = 409.0
+offset_bottom = 103.0
 theme_override_colors/font_color = Color(0.022255924, 0.24512956, 0.4259758, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 horizontal_alignment = 3
@@ -56,10 +57,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 89.0
-offset_top = -22.0
-offset_right = -80.0
-offset_bottom = 22.0
+offset_left = 153.0
+offset_top = 10.0
+offset_right = -135.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
@@ -67,15 +68,19 @@ alignment = 2
 [node name="Opcion0" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1157351222]
 layout_mode = 2
 autowrap_mode = 2
+icon_alignment = 1
 
 [node name="Opcion1" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1201652875]
 layout_mode = 2
+icon_alignment = 1
 
 [node name="Opcion2" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=829389089]
 layout_mode = 2
+icon_alignment = 1
 
 [node name="Opcion3" type="Button" parent="TerminalUI/Panel/TipoA" unique_id=1581256458]
 layout_mode = 2
+icon_alignment = 1
 
 [node name="TipoB" type="GridContainer" parent="TerminalUI/Panel" unique_id=2029018846]
 layout_direction = 2
