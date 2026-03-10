@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cve0xm4etitvf"
-path="res://.godot/imported/fondo verde.jpg-2947adb9211b0adefa205e19dc40d4fb.ctex"
+uid="uid://cnkj0ccibhe66"
+path="res://.godot/imported/Captura de pantalla 2026-03-10 102837.png-a41f20015a42247aab34c23f656efb23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Salas/fondo verde.jpg"
-dest_files=["res://.godot/imported/fondo verde.jpg-2947adb9211b0adefa205e19dc40d4fb.ctex"]
+source_file="res://Scenes/Salas/Captura de pantalla 2026-03-10 102837.png"
+dest_files=["res://.godot/imported/Captura de pantalla 2026-03-10 102837.png-a41f20015a42247aab34c23f656efb23.ctex"]
 
 [params]
 
