@@ -130,9 +130,10 @@ func _ready() -> void:
 	for i in _opciones_btns.size():
 		_opciones_btns[i].pressed.connect(_on_opcion_presionada.bind(i))
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
 		_cerrar()
+		get_viewport().set_input_as_handled()
 
 # ── API pública ───────────────────────────────────────────────────────────────
 func abrir() -> void:
