@@ -1,24 +1,37 @@
 [gd_scene format=3 uid="uid://ccxlmdu3o3ogx"]
 
+[ext_resource type="Script" path="res://Script/dialogo_sistema.gd" id="1_n3p0d"]
+
 [node name="DialogoSistema" type="CanvasLayer" unique_id=1855485140]
+script = ExtResource("1_n3p0d")
 
 [node name="Panel" type="Panel" parent="." unique_id=408982267]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NombreLabel" type="Label" parent="Panel" unique_id=937627689]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1151.0
+offset_bottom = 47.0
 text = "> SISTEMA_v1.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TextoLabel" type="RichTextLabel" parent="Panel" unique_id=186554358]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 350.0
+offset_top = 125.0
+offset_right = 775.0
+offset_bottom = 437.0
 
 [node name="ContinuarLabel" type="Label" parent="Panel" unique_id=1804682326]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 514.0
+offset_top = 513.0
+offset_right = 598.0
+offset_bottom = 536.0
 text = "[ E / Enter ]"
