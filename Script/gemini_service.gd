@@ -66,8 +66,8 @@ Responde ÚNICAMENTE con este JSON exacto, sin explicaciones ni markdown:
   "tipo": "drag",
   "pregunta": "Arrastra cada concepto a su definición correcta:",
   "pares": [
-    {"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
-    {"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
+	{"concepto": "NombreConcepto1", "definicion": "Definición corta 1"},
+	{"concepto": "NombreConcepto2", "definicion": "Definición corta 2"}
   ]
 }
 
