@@ -57,6 +57,11 @@ const DIALOGOS := {
 }
 
 # ── Nodos ─────────────────────────────────────────────────────────────────────
+<<<<<<< Updated upstream
+=======
+@onready var _panel          : Panel         = $Panel
+@onready var _nombre_label   : Label         = $Panel/NombreLabel
+>>>>>>> Stashed changes
 @onready var _texto_label    : RichTextLabel = $Panel/TextoLabel
 @onready var _continuar_label: Label         = $Panel/ContinuarLabel
 

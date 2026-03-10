@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://dpsnr8rqn0rw"]
+=======
+[gd_scene format=3 uid="uid://0iqvquvml8oe"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://bk1xe2rdfkq8h" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Char_Sprites/char_idle_down_anim_strip_6.png" id="1_acqhf"]
 
@@ -59,10 +63,16 @@ height = 14.0
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1847846423]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1510770990]
+<<<<<<< Updated upstream
 visibility_layer = 2
 sprite_frames = SubResource("SpriteFrames_8gudg")
 autoplay = "default"
 frame_progress = 0.82891005
+=======
+sprite_frames = SubResource("SpriteFrames_8gudg")
+autoplay = "default"
+frame_progress = 0.7517977
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=605995803]
 position = Vector2(0, -1)

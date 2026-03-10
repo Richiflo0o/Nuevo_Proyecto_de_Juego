@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://ddtyxrr5q726q"]
 
 [ext_resource type="Texture2D" uid="uid://d4jebm2gdtmdp" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Spider_Sprites/spider_idle_anim_all_dir_strip_4.png" id="2_bhewd"]
@@ -31,6 +32,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 "
 
+=======
+[gd_scene format=3 uid="uid://cmsdt6sj8h2s4"]
+
+[ext_resource type="Script" uid="uid://ds2o66e7xddfo" path="res://Script/bug.gd" id="1_wgok0"]
+[ext_resource type="Texture2D" uid="uid://d4jebm2gdtmdp" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Spider_Sprites/spider_idle_anim_all_dir_strip_4.png" id="2_bhewd"]
+[ext_resource type="Texture2D" uid="uid://b2lwqf5xmap4j" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Spider_Sprites/spider_run_anim_all_dir_strip_4.png" id="3_6lv5s"]
+
+>>>>>>> Stashed changes
 [sub_resource type="AtlasTexture" id="AtlasTexture_aiyty"]
 atlas = ExtResource("2_bhewd")
 region = Rect2(0, 0, 16, 16)
@@ -110,6 +119,7 @@ radius = 120.0
 size = Vector2(14, 8)
 
 [node name="Bug" type="CharacterBody2D" unique_id=1615879790]
+<<<<<<< Updated upstream
 collision_layer = 4
 collision_mask = 2
 script = SubResource("GDScript_ivymh")
@@ -119,11 +129,24 @@ sprite_frames = SubResource("SpriteFrames_cty3t")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.5131141
+=======
+script = ExtResource("1_wgok0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=691194129]
+sprite_frames = SubResource("SpriteFrames_cty3t")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.48192364
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1839436595]
 shape = SubResource("RectangleShape2D_rmxrj")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1575926131]
+<<<<<<< Updated upstream
+=======
+visible = false
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1996372884]
 shape = SubResource("CircleShape2D_ivymh")
