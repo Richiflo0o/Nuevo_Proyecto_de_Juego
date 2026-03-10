@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cjjo3saqpgdtx"]
+
+[ext_resource type="Script" uid="uid://efoghyd33do7" path="res://Script/intro_screen.gd" id="1_vxnr6"]
+
+[node name="IntroScreen" type="Control" unique_id=1869565058]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxnr6")
+
+[node name="Fondo" type="ColorRect" parent="." unique_id=2051230233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Imagen" type="TextureRect" parent="." unique_id=1739491357]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="ContinuarLabel" type="Label" parent="." unique_id=1910032460]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "[ Presiona cualquier tecla ]"
+horizontal_alignment = 3
