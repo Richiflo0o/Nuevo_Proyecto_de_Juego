@@ -253,7 +253,7 @@ tile_map_data = PackedByteArray("AADg/+//AAAGAAEAAADg//D/AAAGAAEAAADg//H/AAAGAAE
 tile_set = SubResource("TileSet_mhrw0")
 
 [node name="Player" parent="TileMapLayer" unique_id=422160145 instance=ExtResource("3_wn2vj")]
-position = Vector2(239, 90)
+position = Vector2(181, 182)
 
 [node name="Decoraciones" type="Node2D" parent="." unique_id=1512890155]
 
