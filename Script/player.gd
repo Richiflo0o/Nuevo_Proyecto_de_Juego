@@ -43,8 +43,8 @@ func actualizar_animacion(dir: Vector2):
 	else:
 		sprite.play("Idle_" + ultima_direccion)
 	
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):  # La tecla ESC por defecto
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://Scenes/MenuInicio.tscn")
 	if event.is_action_pressed("interactuar"): # Define "E" en el Input Map
 		print("=== TECLA E PRESIONADA ===")
