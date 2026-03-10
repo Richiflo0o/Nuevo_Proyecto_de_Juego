@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ccxlmdu3o3ogx"]
+
+[node name="DialogoSistema" type="CanvasLayer" unique_id=1855485140]
+
+[node name="Panel" type="Panel" parent="." unique_id=408982267]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NombreLabel" type="Label" parent="Panel" unique_id=937627689]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "> SISTEMA_v1.0"
+
+[node name="TextoLabel" type="RichTextLabel" parent="Panel" unique_id=186554358]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContinuarLabel" type="Label" parent="Panel" unique_id=1804682326]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "[ E / Enter ]"
