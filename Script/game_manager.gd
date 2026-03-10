@@ -18,10 +18,11 @@ const PUNTOS_POR_ENEMIGO  := 50
 
 # Rutas de las salas en orden secuencial
 # Agrégalas aquí conforme las vayas creando
-
-const SALAS = [
-"res://Scenes/Salas/Mundo.tscn",
-"res://Scenes/Salas/laberinto.tscn"
+const SALAS := [
+	"res://Scenes/intro_screen.tscn",
+	"res://Scenes/Salas/Mundo.tscn",
+	"res://Scenes/Salas/Sala2.tscn",
+	"res://Scenes/Salas/Sala3.tscn",
 ]
 
 # ── Estado persistente entre salas ────────────────────────────────────────────
