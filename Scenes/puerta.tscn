@@ -164,7 +164,11 @@ sources/0 = SubResource("TileSetAtlasSource_uvg50")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvx86"]
 size = Vector2(48, 32)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tswu4"]
+font_size = 11
+
 [node name="Puerta" type="StaticBody2D" unique_id=2102870086]
+collision_mask = 2
 script = ExtResource("1_phvrj")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2089150081]
@@ -174,3 +178,10 @@ tile_set = SubResource("TileSet_yilcf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1881466835]
 position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_uvx86")
+
+[node name="Indicador" type="Label" parent="." unique_id=110201764]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "[E] Entrar"
+label_settings = SubResource("LabelSettings_tswu4")
+horizontal_alignment = 1
