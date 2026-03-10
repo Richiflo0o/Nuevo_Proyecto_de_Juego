@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://85tfcpe8xpei"]
 
 [ext_resource type="Script" path="res://Script/dialogo_sistema.gd" id="1_ubxw4"]
+=======
+[gd_scene format=3 uid="uid://cs8e6clrij6aw"]
+
+[ext_resource type="Script" uid="uid://bfms6vuabqt0j" path="res://Script/dialogo_sistema.gd" id="1_ubxw4"]
+>>>>>>> Stashed changes
 
 [node name="DialogoSistema" type="CanvasLayer" unique_id=1533265325]
 script = ExtResource("1_ubxw4")

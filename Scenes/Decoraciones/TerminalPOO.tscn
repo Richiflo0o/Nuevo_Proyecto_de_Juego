@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cva4jdoora7l6" path="res://Assets/Propios/Terminal.png" id="1_5c5nb"]
 [ext_resource type="Script" uid="uid://b7iblsh8l63wl" path="res://Script/terminal_poo.gd" id="1_m5faa"]
 [ext_resource type="Script" uid="uid://4joe33hvcs2o" path="res://Script/terminal_ui.gd" id="3_7rbib"]
-[ext_resource type="Texture2D" uid="uid://cix61jtyra4xr" path="res://Scenes/Salas/Captura de pantalla 2026-03-09 235111.png" id="4_t3tex"]
+[ext_resource type="Texture2D" uid="uid://cix61jtyra4xr" path="res://Assets/Propios/Captura de pantalla 2026-03-09 235111.png" id="4_t3tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5faa"]
 size = Vector2(10, 10)
@@ -27,7 +27,8 @@ shape = SubResource("RectangleShape2D_m5faa")
 script = ExtResource("3_7rbib")
 
 [node name="Panel" type="Panel" parent="TerminalUI" unique_id=1230982312]
-anchors_preset = -1
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -10.0

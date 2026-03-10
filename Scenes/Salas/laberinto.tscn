@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bbv3qn6nedrhn"]
+[gd_scene format=4 uid="uid://dnqnpxjgdc41v"]
 
 [ext_resource type="Texture2D" uid="uid://b6nu4h3881eq8" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png" id="1_n2i2u"]
 
@@ -498,6 +498,7 @@ texture = ExtResource("1_n2i2u")
 
 [sub_resource type="TileSet" id="TileSet_e45ie"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_3ef07")
 
 [node name="Laberinto" type="Node2D" unique_id=1900452766]
