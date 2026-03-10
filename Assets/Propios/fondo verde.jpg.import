@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wdf3ti047mwd"
-path="res://.godot/imported/pixel.jpg-39db506f5e9d85684c9e0de1810361e6.ctex"
+uid="uid://cve0xm4etitvf"
+path="res://.godot/imported/fondo verde.jpg-9f57b816092fdc7a7bc3af9e893601e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Salas/pixel.jpg"
-dest_files=["res://.godot/imported/pixel.jpg-39db506f5e9d85684c9e0de1810361e6.ctex"]
+source_file="res://Assets/Propios/fondo verde.jpg"
+dest_files=["res://.godot/imported/fondo verde.jpg-9f57b816092fdc7a7bc3af9e893601e2.ctex"]
 
 [params]
 

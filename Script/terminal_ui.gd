@@ -345,8 +345,8 @@ func _fallo() -> void:
 # ── Helpers ───────────────────────────────────────────────────────────────────
 func _centrar_panel() -> void:
 	var screen_size := get_viewport().get_visible_rect().size
-	_panel.position = (screen_size - PANEL_SIZE) / 2
-	_panel.size     = PANEL_SIZE
+	_panel.set_deferred("position", (screen_size - PANEL_SIZE) / 2)
+	_panel.set_deferred("size", PANEL_SIZE)
 
 func _animar_carga() -> void:
 	var puntos := 0
