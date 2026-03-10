@@ -124,9 +124,12 @@ func _ready() -> void:
 	print("=== TERMINAL UI READY ===")
 	print("Panel: ", $Panel)
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	visible = false
+	
+	visible = false   # ← AQUÍ se oculta al iniciar
+	
 	_centrar_panel()
 	_cerrar_btn.pressed.connect(_cerrar)
+
 	for i in _opciones_btns.size():
 		_opciones_btns[i].pressed.connect(_on_opcion_presionada.bind(i))
 
@@ -356,3 +359,4 @@ func _cerrar() -> void:
 	visible = false
 	get_tree().paused = false
 	terminal_cerrada.emit()
+	

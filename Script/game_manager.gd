@@ -86,6 +86,7 @@ func terminal_resuelta(id_terminal: String) -> bool:
 
 # ── Privados ──────────────────────────────────────────────────────────────────
 func _cargar_sala_actual() -> void:
+
 	get_tree().change_scene_to_file(SALAS[sala_actual])
 
 func _reiniciar_sala() -> void:
