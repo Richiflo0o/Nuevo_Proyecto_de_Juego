@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwseoqoxpj2sr" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Overworld_Tileset.png" id="1_vpgb6"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q35lp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvls8"]
 texture = ExtResource("1_vpgb6")
 0:0/0 = 0
 1:0/0 = 0
@@ -61,9 +61,8 @@ texture = ExtResource("1_vpgb6")
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -7.011938, 0, -8, 1.9538479, -8, 1.9903679, -6.957157, 3.0129423, -6.957157, 3.0312023, -5.971103, 5.0398307, -5.952843, 5.0398307, -3.9989958, 6.007624, -4.0172563, 6.025884, -3.0129423, 6.9936776, -2.9946818, 6.9754176, 3.0494628, 6.0076237, 3.0312023, -6.062405, 2.9764216, -6.993678, 2.9581614, -7.066719, -2.9764218, -6.0441446, -2.9581614, -6.0076237, -3.9807358, -5.0033097, -3.9989963, -5.0033097, -6.0258846, -3.0414743, -6.007984, -3.0494626, -6.993678)
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.2007475, -6.379584, 0.6240902, -8, 5.200747, -6.032867, 7.2810464, -2.7737317, 7.073016, 3.328478, 5.3394337, 6.0328665, 2.7737312, 6.93433, -2.5657024, 6.7262993, -4.9927177, 5.963523, -6.9343295, 2.565702, -7.1423597, -2.6350455)
 5:3/0 = 0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -7.011938, 0, -8, 1.9538479, -8, 1.9903679, -6.957157, 3.0129423, -6.957157, 3.0312023, -5.971103, 5.0398307, -5.952843, 5.0398307, -3.9989958, 6.007624, -4.0172563, 6.025884, -3.0129423, 6.9936776, -2.9946818, 6.9754176, 3.0494628, 6.0076237, 3.0312023, 6.007624, 5.02157, 5.0033097, 5.03983, 5.0033097, 5.9893637, 3.0129423, 5.9893637, 3.0139713, 7.0065045, -3.0270023, 6.9819913, -3.0129423, 5.9711037, -5.02157, 5.9893637, -5.0215707, 4.9850497, -6.007624, 4.9850497, -6.062405, 2.9764216, -6.993678, 2.9581614, -7.066719, -2.9764218, -6.0441446, -2.9581614, -6.0076237, -3.9807358, -5.0033097, -3.9989963, -5.0033097, -6.0258846, -3.0414743, -6.007984, -3.0494626, -6.993678)
 6:3/0 = 0
 7:3/0 = 0
 8:3/0 = 0
@@ -227,10 +226,13 @@ texture = ExtResource("1_vpgb6")
 16:12/0 = 0
 17:12/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ffqko"]
+[sub_resource type="TileSet" id="TileSet_l83h0"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_q35lp")
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_tvls8")
 
-[node name="TileMapLayer" type="TileMapLayer" unique_id=1919236177]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 0)
-tile_set = SubResource("TileSet_ffqko")
+[node name="Arbusto" type="Node2D" unique_id=1820598167]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1597996773]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 4, 0, 3, 0, 0, 0)
+tile_set = SubResource("TileSet_l83h0")
