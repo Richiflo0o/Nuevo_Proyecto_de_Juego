@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhngwlm1onk1c" path="res://Scenes/Decoraciones/Arbol.tscn" id="5_054r1"]
 [ext_resource type="PackedScene" uid="uid://y8ar0p4q0lav" path="res://Scenes/Decoraciones/Arbusto.tscn" id="6_mhrw0"]
 [ext_resource type="AudioStream" uid="uid://dowhn2yyesj3i" path="res://Assets/Audio/Musica/POL-star-way-short.wav" id="7_mhrw0"]
+[ext_resource type="PackedScene" uid="uid://coa8eewoxox4f" path="res://Scenes/PanelControles.tscn" id="9_wqfsp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_054r1"]
 texture = ExtResource("1_k6kjq")
@@ -253,7 +254,9 @@ tile_map_data = PackedByteArray("AADg/+//AAAGAAEAAADg//D/AAAGAAEAAADg//H/AAAGAAE
 tile_set = SubResource("TileSet_mhrw0")
 
 [node name="Player" parent="TileMapLayer" unique_id=422160145 instance=ExtResource("3_wn2vj")]
-position = Vector2(239, 90)
+position = Vector2(-359, -148)
+
+[node name="PanelControles" parent="TileMapLayer" unique_id=2132963146 instance=ExtResource("9_wqfsp")]
 
 [node name="Decoraciones" type="Node2D" parent="." unique_id=1512890155]
 
