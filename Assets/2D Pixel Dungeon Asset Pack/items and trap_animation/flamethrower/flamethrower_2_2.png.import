@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://cmfpw7cv15ln7"
+=======
+uid="uid://csgb5jrixdp6h"
+>>>>>>> Stashed changes
 path="res://.godot/imported/flamethrower_2_2.png-6c96d755345e8b76a07c5253b64fb67f.ctex"
 metadata={
 "vram_texture": false

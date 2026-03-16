@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://dt1e4houvmio1"
+=======
+uid="uid://cji5j5sywep0y"
+>>>>>>> Stashed changes
 path="res://.godot/imported/candlestick_2_4.png-9167dfe1d9798d2ee5b5bba32ec840e7.ctex"
 metadata={
 "vram_texture": false
