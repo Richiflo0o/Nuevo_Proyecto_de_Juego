@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7c4mjg1s8kxi"
-path="res://.godot/imported/intro_02.jpg-9d075c21d17bbb3f2450b9c567c3d28a.ctex"
+uid="uid://hha4ynjoqiob"
+path="res://.godot/imported/Hit (32x32).png-e593016f17d062491c3f224b003e6b60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/intro/intro_02.jpg"
-dest_files=["res://.godot/imported/intro_02.jpg-9d075c21d17bbb3f2450b9c567c3d28a.ctex"]
+source_file="res://Assets/Sprites [Enemies]/Enemigo_Rosa/Hit (32x32).png"
+dest_files=["res://.godot/imported/Hit (32x32).png-e593016f17d062491c3f224b003e6b60.ctex"]
 
 [params]
 
