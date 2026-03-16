@@ -24,6 +24,7 @@ texture = ExtResource("1_5c5nb")
 shape = SubResource("RectangleShape2D_m5faa")
 
 [node name="TerminalUI" type="CanvasLayer" parent="." unique_id=1125968989]
+visible = false
 script = ExtResource("3_7rbib")
 
 [node name="Panel" type="Panel" parent="TerminalUI" unique_id=1230982312]
