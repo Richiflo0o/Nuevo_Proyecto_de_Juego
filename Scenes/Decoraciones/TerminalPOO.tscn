@@ -3,13 +3,59 @@
 [ext_resource type="Texture2D" uid="uid://cva4jdoora7l6" path="res://Assets/Propios/Terminal.png" id="1_5c5nb"]
 [ext_resource type="Script" uid="uid://b7iblsh8l63wl" path="res://Script/terminal_poo.gd" id="1_m5faa"]
 [ext_resource type="Script" uid="uid://4joe33hvcs2o" path="res://Script/terminal_ui.gd" id="3_7rbib"]
-[ext_resource type="Texture2D" uid="uid://cix61jtyra4xr" path="res://Assets/Propios/Captura de pantalla 2026-03-09 235111.png" id="4_t3tex"]
+[ext_resource type="Texture2D" uid="uid://bm5mv3rwn1kcw" path="res://Assets/Propios/terminal virtual.jpeg" id="4_t3tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5faa"]
 size = Vector2(10, 10)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5iwva"]
 texture = ExtResource("4_t3tex")
+
+[sub_resource type="FontFile" id="FontFile_t3tex"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
 
 [node name="TerminalPOO" type="StaticBody2D" unique_id=1514370293]
 collision_layer = 16
@@ -27,7 +73,7 @@ shape = SubResource("RectangleShape2D_m5faa")
 script = ExtResource("3_7rbib")
 
 [node name="Panel" type="Panel" parent="TerminalUI" unique_id=1230982312]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 186.0
@@ -40,13 +86,17 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
 
 [node name="PreguntaLabel" type="Label" parent="TerminalUI/Panel" unique_id=580209134]
 layout_mode = 1
-anchors_preset = -1
-offset_left = 176.0
-offset_top = 57.0
-offset_right = 409.0
-offset_bottom = 103.0
-theme_override_colors/font_color = Color(0.022255924, 0.24512956, 0.4259758, 1)
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 151.0
+offset_top = 60.0
+offset_right = -124.0
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9587614, 0.9782378, 0.9988995, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_t3tex")
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 3
 autowrap_mode = 2
 
@@ -90,9 +140,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -226.0
+offset_left = -102.5
 offset_top = -46.0
-offset_right = 226.0
+offset_right = 112.5
 offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -101,25 +151,27 @@ columns = 2
 [node name="FeedbackLabel" type="Label" parent="TerminalUI/Panel" unique_id=1863905124]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5105882
-anchor_top = 0.04
-anchor_right = 0.5872905
-anchor_bottom = 0.04
-offset_right = 1.0
-offset_bottom = 23.0
+anchor_left = 0.22254759
+anchor_top = 0.88071066
+anchor_right = 0.7101025
+anchor_bottom = 0.88071066
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CerrarBtn" type="Button" parent="TerminalUI/Panel" unique_id=2146431582]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.96800005
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -37.5
-offset_top = -25.0
-offset_right = 37.5
+offset_left = -293.5
+offset_top = -366.39203
+offset_right = -212.5
+offset_bottom = -354.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 12
