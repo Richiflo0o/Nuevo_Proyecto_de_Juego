@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwseoqoxpj2sr" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Overworld_Tileset.png" id="1_k6kjq"]
 [ext_resource type="PackedScene" uid="uid://vurxh64qptto" path="res://Scenes/Decoraciones/TerminalPOO.tscn" id="2_mctxj"]
 [ext_resource type="PackedScene" uid="uid://du5gauvxeyfja" path="res://Scenes/Player.tscn" id="3_wn2vj"]
-[ext_resource type="PackedScene" uid="uid://b7hdliqq8rwvd" path="res://Scenes/puerta.tscn" id="4_mctxj"]
+[ext_resource type="PackedScene" uid="uid://b7hdliqq8rwvd" path="res://Scenes/Decoraciones/puerta.tscn" id="4_mctxj"]
 [ext_resource type="PackedScene" uid="uid://dhngwlm1onk1c" path="res://Scenes/Decoraciones/Arbol.tscn" id="5_054r1"]
 [ext_resource type="PackedScene" uid="uid://y8ar0p4q0lav" path="res://Scenes/Decoraciones/Arbusto.tscn" id="6_mhrw0"]
 [ext_resource type="AudioStream" uid="uid://dowhn2yyesj3i" path="res://Assets/Audio/Musica/POL-star-way-short.wav" id="7_mhrw0"]
@@ -254,7 +254,7 @@ tile_map_data = PackedByteArray("AADg/+//AAAGAAEAAADg//D/AAAGAAEAAADg//H/AAAGAAE
 tile_set = SubResource("TileSet_mhrw0")
 
 [node name="Player" parent="TileMapLayer" unique_id=422160145 instance=ExtResource("3_wn2vj")]
-position = Vector2(-359, -148)
+position = Vector2(226, 201)
 
 [node name="PanelControles" parent="TileMapLayer" unique_id=2132963146 instance=ExtResource("9_wqfsp")]
 

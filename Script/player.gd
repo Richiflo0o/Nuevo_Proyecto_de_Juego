@@ -21,7 +21,7 @@ func _physics_process(_delta):
 	
 	# Multiplicamos por 25 o 30 para darle alcance frente al personaje
 	if direction.length() > 0:
-		ray.target_position = direction * 25
+		ray.target_position = direction * 25	
 
 func actualizar_direccion_rayo(dir: Vector2):
 	# Si el jugador se está moviendo, el rayo apunta en esa dirección
@@ -45,7 +45,7 @@ func actualizar_animacion(dir: Vector2):
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_file("res://Scenes/MenuInicio.tscn")
+		GameManager.ir_a_menu()
 	if event.is_action_pressed("interactuar"): # Define "E" en el Input Map
 		print("=== TECLA E PRESIONADA ===")
 		if ray.is_colliding():

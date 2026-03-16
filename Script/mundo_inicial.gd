@@ -8,7 +8,6 @@ const BUGS_REQUERIDOS := 0
 
 @onready var puerta   = $Puerta
 @onready var terminal = $TerminalPOO
-var _npc              = null   # opcional, se busca si existe
 
 # ── Estado ────────────────────────────────────────────────────────────────────
 var _terminal_resuelta := false
