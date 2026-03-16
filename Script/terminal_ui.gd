@@ -17,7 +17,7 @@ signal respuesta_correcta
 signal terminal_cerrada
 
 # ── Constantes ────────────────────────────────────────────────────────────────
-const PANEL_SIZE          := Vector2(500, 400)
+const PANEL_SIZE          := Vector2(960, 720)
 const DELAY_PRECARGA      := 4.0   # segundos entre peticiones (evita 429)
 const DELAY_REINTENTO_429 := 6.0   # espera antes de reintentar tras rate limit
 

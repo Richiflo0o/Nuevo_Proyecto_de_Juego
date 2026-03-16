@@ -73,7 +73,6 @@ texture = ExtResource("1_5c5nb")
 shape = SubResource("RectangleShape2D_m5faa")
 
 [node name="TerminalUI" type="CanvasLayer" parent="." unique_id=1125968989]
-visible = false
 script = ExtResource("3_7rbib")
 
 [node name="Panel" type="Panel" parent="TerminalUI" unique_id=1230982312]
@@ -81,9 +80,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 186.0
-offset_top = 112.0
-offset_right = -244.0
-offset_bottom = -100.0
+offset_top = 3.0
+offset_right = -134.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
@@ -92,17 +91,17 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 151.0
-offset_top = 60.0
-offset_right = -124.0
-offset_bottom = 84.0
+offset_left = 91.0
+offset_top = 57.0
+offset_right = -92.0
+offset_bottom = 81.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.9587614, 0.9782378, 0.9988995, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontFile_t3tex")
 theme_override_font_sizes/font_size = 17
-horizontal_alignment = 3
-autowrap_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="TipoA" type="VBoxContainer" parent="TerminalUI/Panel" unique_id=2026415583]
 layout_mode = 1
@@ -155,11 +154,13 @@ columns = 2
 [node name="FeedbackLabel" type="Label" parent="TerminalUI/Panel" unique_id=1863905124]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.22254759
-anchor_top = 0.88071066
-anchor_right = 0.7101025
-anchor_bottom = 0.88071066
+anchor_left = 0.5
+anchor_top = 0.92638886
+anchor_right = 0.5
+anchor_bottom = 0.92638886
+offset_left = -0.5
 offset_top = -23.0
+offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
@@ -167,17 +168,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CerrarBtn" type="Button" parent="TerminalUI/Panel" unique_id=2146431582]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.96800005
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -293.5
-offset_top = -366.39203
-offset_right = -212.5
-offset_bottom = -354.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_right = 81.0
+offset_bottom = 25.0
 theme_override_font_sizes/font_size = 12
 text = "Cerrar [Esc]"
 alignment = 0

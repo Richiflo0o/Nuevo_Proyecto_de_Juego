@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dlmdfd73orw2p" path="res://Assets/2D Pixel Dungeon Asset Pack/Dungeon_Tileset_at.png" id="1_x32xo"]
 [ext_resource type="Texture2D" uid="uid://cb0qvva3720q0" path="res://Assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_l3aur"]
 [ext_resource type="Texture2D" uid="uid://b6nu4h3881eq8" path="res://Assets/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png" id="3_cdt6x"]
+[ext_resource type="PackedScene" uid="uid://du5gauvxeyfja" path="res://Scenes/Player.tscn" id="4_l3aur"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_235vo"]
 texture = ExtResource("1_x32xo")
@@ -1549,3 +1550,6 @@ tile_set = SubResource("TileSet_vgpck")
 [node name="ANTORCHAS" type="TileMapLayer" parent="." unique_id=1198244511]
 tile_map_data = PackedByteArray("AAAGAAEAAQAAAAkAAAAJAAEAAQAAAAkAAAAMAAEAAQAAAAkAAAAPAAEAAQAAAAkAAAASAAEAAQAAAAkAAAAVAAEAAQAAAAkAAAADAAEAAQAAAAkAAAACAAQAAQABAAkAAAACAAYAAQABAAkAAAACAAgAAQABAAkAAAACAAoAAQABAAkAAAAXAAQAAQABAAkAABAXAAYAAQABAAkAABAXAAoAAQABAAkAABAXAAEAAQABAAkAABAFAAMAAQADAAkAAAAUAAgAAQADAAkAAAACAAsAAQAEAAYAAAAXAAIAAQAEAAYAABA=")
 tile_set = SubResource("TileSet_n2ucd")
+
+[node name="Player" parent="." unique_id=422160145 instance=ExtResource("4_l3aur")]
+position = Vector2(56, 67)

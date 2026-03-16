@@ -181,8 +181,10 @@ position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_uvx86")
 
 [node name="Indicador" type="Label" parent="." unique_id=110201764]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -32.0
+offset_top = -29.0
+offset_right = 18.0
+offset_bottom = -6.0
 text = "[E] Entrar"
 label_settings = SubResource("LabelSettings_tswu4")
 horizontal_alignment = 1

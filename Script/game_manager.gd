@@ -17,12 +17,14 @@ const VIDA_MAXIMA         := 100
 const PUNTOS_POR_TERMINAL := 150
 const PUNTOS_POR_ENEMIGO  := 50
 
-# Orden de escenas del juego — edita aquí si cambias rutas
+# Orden de escenas del juego
+# IMPORTANTE: nueva_partida() inicia en sala 0 (intro)
+#             La intro llama iniciar_juego() al terminar
 const SALAS := [
 	"res://Scenes/intro_screen.tscn",       # 0 — intro con diapositivas
-	"res://Scenes/Salas/Mundo.tscn",       # 1 — mundo inicial (tutorial)
-	"res://Scenes/Salas/laberinto.tscn",   # 2 — laberinto con terminales C#
-	"res://Scenes/Salas/Sala3.tscn",       # 3 — sala final (agregar cuando exista)
+	"res://Scenes/Salas/Mundo.tscn",        # 1 — mundo tutorial
+	"res://Scenes/Salas/laberinto.tscn",    # 2 — laberinto con terminales C#
+	"res://Scenes/Salas/Sala3.tscn",        # 3 — sala final (pendiente)
 ]
 
 const ESCENA_MENU := "res://Scenes/MenuInicio.tscn"
@@ -35,15 +37,18 @@ var terminales_resueltas : Array[String] = []
 
 # ── Navegación ────────────────────────────────────────────────────────────────
 
+# Llamado por el botón JUGAR del menú → va a la intro primero
 func nueva_partida() -> void:
 	vida                 = VIDA_MAXIMA
 	puntuacion           = 0
-	sala_actual          = 1   # empieza en Mundo.tscn, no en la intro
+	sala_actual          = 0   # ← empieza en intro_screen.tscn
 	terminales_resueltas = []
 	_cargar_sala_actual()
 
-func ir_a_intro() -> void:
-	sala_actual = 0
+# Llamado por intro_screen.gd al terminar las diapositivas → inicia el juego real
+func iniciar_juego() -> void:
+	sala_actual = 1   # ← Mundo.tscn (tutorial)
+	sala_cambiada.emit(sala_actual)
 	_cargar_sala_actual()
 
 func ir_a_menu() -> void:
