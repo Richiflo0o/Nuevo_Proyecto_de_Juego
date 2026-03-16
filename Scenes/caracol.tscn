@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://br0i61u8burou"]
 
 [ext_resource type="Texture2D" uid="uid://cwj67lky6olm7" path="res://Assets/imagenes/caracol/Walk (38x24).png" id="1_dfj3l"]
-[ext_resource type="Script" uid="uid://db8wknv1lu038" path="res://Scenes/caracol.gd" id="1_qcy3p"]
+[ext_resource type="Script" uid="uid://db8wknv1lu038" path="res://Script/caracol.gd" id="1_qcy3p"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcy3p"]
 atlas = ExtResource("1_dfj3l")

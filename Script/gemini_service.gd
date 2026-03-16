@@ -8,7 +8,7 @@ extends Node
 # ── Reemplaza Config.GEMINI_API_KEY por tu Groq key ──────────────────────────
 # En config.gd agrega: const GROQ_API_KEY := "gsk_..."
 const API_KEY := Config.GROQ_API_KEY
-const API_URL := "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"
+const API_URL := "https://api.groq.com/openai/v1/chat/completions"
 const MODELO  := "llama-3.1-8b-instant"
 
 signal pregunta_lista(datos: Dictionary)

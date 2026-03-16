@@ -111,7 +111,7 @@ func _terminar() -> void:
 
 	await tween.finished
 
-	GameManager.avanzar_sala()
+	GameManager.nueva_partida()
 
 # ── Parpadeo del texto ────────────────────────────────────
 func _parpadear_continuar() -> void:
