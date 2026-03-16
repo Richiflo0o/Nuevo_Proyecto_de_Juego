@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://ux78rcxo10na"]
-
-[ext_resource type="PackedScene" uid="uid://b30kt6e2qdrn6" path="res://Scenes/mini_jueguito.tscn" id="1_umpu6"]
-
-[node name="Enemigo" type="Node2D" unique_id=1290867364]
-
-[node name="Mini_Jueguito" parent="." unique_id=1565564173 instance=ExtResource("1_umpu6")]
