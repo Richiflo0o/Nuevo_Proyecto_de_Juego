@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvmpkg28evdbr"
-path="res://.godot/imported/intro_07.jpg-8452f8185571115df7afa0bacc27971f.ctex"
+uid="uid://d16uab0p5li4y"
+path="res://.godot/imported/Jump (32x32).png-e3b1b488e09a76999b038eee7779116d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/intro/intro_07.jpg"
-dest_files=["res://.godot/imported/intro_07.jpg-8452f8185571115df7afa0bacc27971f.ctex"]
+source_file="res://Assets/Sprites [Enemies]/Enemigo_Rosa/Jump (32x32).png"
+dest_files=["res://.godot/imported/Jump (32x32).png-e3b1b488e09a76999b038eee7779116d.ctex"]
 
 [params]
 

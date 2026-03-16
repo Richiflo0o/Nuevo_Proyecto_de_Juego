@@ -5,12 +5,11 @@
 
 extends Node
 
-# API Groq
-const API_URL = "AIzaSyDp56P8K-1jfCAw0TayeyB-XGQJ0PhYe40"
-const MODELO = "llama-3.1-8b-instant"
-
-# tu API key
-var API_KEY = Config.GEMINI_API_KEY
+# ── Reemplaza Config.GEMINI_API_KEY por tu Groq key ──────────────────────────
+# En config.gd agrega: const GROQ_API_KEY := "gsk_..."
+const API_KEY := Config.GROQ_API_KEY
+const API_URL := "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"
+const MODELO  := "llama-3.1-8b-instant"
 
 signal pregunta_lista(datos: Dictionary)
 signal error_api(mensaje: String)
@@ -82,8 +81,8 @@ Responde ÚNICAMENTE con este JSON exacto, sin markdown:
   "tipo": "drag",
   "pregunta": "Arrastra cada concepto a su definición correcta:",
   "pares": [
-    {"concepto": "Concepto1", "definicion": "Definición corta"},
-    {"concepto": "Concepto2", "definicion": "Definición corta"}
+	{"concepto": "Concepto1", "definicion": "Definición corta"},
+	{"concepto": "Concepto2", "definicion": "Definición corta"}
   ]
 }
 
