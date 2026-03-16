@@ -1,6 +1,7 @@
 # game_manager.gd
 # Autoload — nombre: GameManager
-# Trackea el estado global del juego entre salas.
+# Centraliza TODO el estado global y navegación entre escenas.
+# Ningún otro script debe llamar get_tree().change_scene_to_file() directamente.
 
 extends Node
 
@@ -12,46 +13,61 @@ signal jugador_muerto
 signal juego_completado
 
 # ── Constantes ────────────────────────────────────────────────────────────────
-const VIDA_MAXIMA       := 100
+const VIDA_MAXIMA         := 100
 const PUNTOS_POR_TERMINAL := 150
 const PUNTOS_POR_ENEMIGO  := 50
 
-# Rutas de las salas en orden secuencial
-# Agrégalas aquí conforme las vayas creando
+# Orden de escenas del juego — edita aquí si cambias rutas
 const SALAS := [
-	"res://Scenes/intro_screen.tscn",
-	"res://Scenes/Salas/Mundo.tscn",
-	"res://Scenes/Salas/Sala2.tscn",
-	"res://Scenes/Salas/Sala3.tscn",
+	"res://Scenes/intro_screen.tscn",       # 0 — intro con diapositivas
+	"res://Scenes/Salas/Mundo.tscn",       # 1 — mundo inicial (tutorial)
+	"res://Scenes/Salas/laberinto.tscn",   # 2 — laberinto con terminales C#
+	"res://Scenes/Salas/Sala3.tscn",       # 3 — sala final (agregar cuando exista)
 ]
 
+const ESCENA_MENU := "res://Scenes/MenuInicio.tscn"
+
 # ── Estado persistente entre salas ────────────────────────────────────────────
-var vida            : int  = VIDA_MAXIMA
-var puntuacion      : int  = 0
-var sala_actual     : int  = 0   # índice en SALAS
-var terminales_resueltas : Array[String] = []  # IDs de terminales ya resueltas
+var vida                 : int           = VIDA_MAXIMA
+var puntuacion           : int           = 0
+var sala_actual          : int           = 0
+var terminales_resueltas : Array[String] = []
 
-# ── API pública ───────────────────────────────────────────────────────────────
+# ── Navegación ────────────────────────────────────────────────────────────────
 
-# Llamar al iniciar una partida nueva desde el menú
 func nueva_partida() -> void:
 	vida                 = VIDA_MAXIMA
 	puntuacion           = 0
-	sala_actual          = 0
+	sala_actual          = 1   # empieza en Mundo.tscn, no en la intro
 	terminales_resueltas = []
 	_cargar_sala_actual()
 
-# Llamar cuando el jugador llega a la puerta de salida
+func ir_a_intro() -> void:
+	sala_actual = 0
+	_cargar_sala_actual()
+
+func ir_a_menu() -> void:
+	get_tree().change_scene_to_file(ESCENA_MENU)
+
 func avanzar_sala() -> void:
 	sala_actual += 1
 	if sala_actual >= SALAS.size():
 		juego_completado.emit()
-		get_tree().change_scene_to_file("res://Scenes/MenuInicio.tscn")
+		ir_a_menu()
 		return
 	sala_cambiada.emit(sala_actual)
 	_cargar_sala_actual()
 
-# Llamar cuando el jugador recibe daño
+func ir_a_sala(indice: int) -> void:
+	if indice < 0 or indice >= SALAS.size():
+		push_error("GameManager: índice de sala inválido: %d" % indice)
+		return
+	sala_actual = indice
+	sala_cambiada.emit(sala_actual)
+	_cargar_sala_actual()
+
+# ── Vida ──────────────────────────────────────────────────────────────────────
+
 func recibir_danio(cantidad: int) -> void:
 	vida = clamp(vida - cantidad, 0, VIDA_MAXIMA)
 	vida_cambiada.emit(vida)
@@ -60,19 +76,18 @@ func recibir_danio(cantidad: int) -> void:
 		await get_tree().create_timer(1.0).timeout
 		_reiniciar_sala()
 
-# Llamar cuando el jugador se cura
 func curar(cantidad: int) -> void:
 	vida = clamp(vida + cantidad, 0, VIDA_MAXIMA)
 	vida_cambiada.emit(vida)
 
-# Llamar cuando el jugador resuelve una terminal
+# ── Puntuación y terminales ───────────────────────────────────────────────────
+
 func registrar_terminal(id_terminal: String) -> void:
 	if id_terminal in terminales_resueltas:
 		return
 	terminales_resueltas.append(id_terminal)
 	agregar_puntos(PUNTOS_POR_TERMINAL)
 
-# Llamar cuando el jugador elimina un enemigo
 func registrar_enemigo_eliminado() -> void:
 	agregar_puntos(PUNTOS_POR_ENEMIGO)
 
@@ -80,17 +95,16 @@ func agregar_puntos(cantidad: int) -> void:
 	puntuacion += cantidad
 	puntuacion_cambiada.emit(puntuacion)
 
-# Consultar si una terminal ya fue resuelta (útil al recargar la sala)
 func terminal_resuelta(id_terminal: String) -> bool:
 	return id_terminal in terminales_resueltas
 
 # ── Privados ──────────────────────────────────────────────────────────────────
-func _cargar_sala_actual() -> void:
 
-	get_tree().change_scene_to_file(SALAS[sala_actual])
+func _cargar_sala_actual() -> void:
+	var ruta : String = SALAS[sala_actual]
+	get_tree().change_scene_to_file(ruta)
 
 func _reiniciar_sala() -> void:
-	# Conserva puntuación y terminales resueltas, solo reinicia la vida
 	vida = VIDA_MAXIMA
 	vida_cambiada.emit(vida)
 	_cargar_sala_actual()

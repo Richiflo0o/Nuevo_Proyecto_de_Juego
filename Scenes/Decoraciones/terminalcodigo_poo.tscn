@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c3ahbpv1vbdxa"]
+
+[ext_resource type="Texture2D" uid="uid://cva4jdoora7l6" path="res://Assets/Propios/Terminal.png" id="1_4xbxm"]
+[ext_resource type="Script" uid="uid://si1u8oqowlef" path="res://Script/terminalcodigo_poo.gd" id="1_18kki"]
+[ext_resource type="Script" uid="uid://dbe0xue5011ij" path="res://Script/terminal_codigo.gd" id="2_ymgkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymgkx"]
+size = Vector2(10, 10)
+
+[node name="TerminalcodigoPOO" type="StaticBody2D" unique_id=457247997]
+script = ExtResource("1_18kki")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1518302457]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_4xbxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1457520433]
+shape = SubResource("RectangleShape2D_ymgkx")
+
+[node name="TerminalCodigo" type="CanvasLayer" parent="." unique_id=989544816]
+script = ExtResource("2_ymgkx")
+
+[node name="Panel" type="Panel" parent="TerminalCodigo" unique_id=92683133]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -350.0
+offset_right = 460.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloLabel" type="Label" parent="TerminalCodigo/Panel" unique_id=229314277]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "> COMPLETAR CÓDIGO"
+
+[node name="FaseExplicacion" type="VBoxContainer" parent="TerminalCodigo/Panel" unique_id=635106031]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConceptoLabel" type="Label" parent="TerminalCodigo/Panel/FaseExplicacion" unique_id=1167838373]
+layout_mode = 2
+
+[node name="ExplicacionLabel" type="RichTextLabel" parent="TerminalCodigo/Panel/FaseExplicacion" unique_id=1448348456]
+layout_mode = 2
+
+[node name="EjemploLabel" type="RichTextLabel" parent="TerminalCodigo/Panel/FaseExplicacion" unique_id=1682811337]
+layout_mode = 2
+
+[node name="ContinuarBtn" type="Button" parent="TerminalCodigo/Panel/FaseExplicacion" unique_id=1904606695]
+layout_mode = 2
+text = "Entendido → Practicar"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TerminalCodigo/Panel" unique_id=1307596027]
+layout_mode = 0
+offset_top = 47.0
+offset_right = 40.0
+offset_bottom = 47.0
+
+[node name="InstruccionLabel" type="Label" parent="TerminalCodigo/Panel/VBoxContainer" unique_id=1248623350]
+layout_mode = 2
+text = "Escribe lo que falta en el ___"
+
+[node name="CodigoLabel" type="RichTextLabel" parent="TerminalCodigo/Panel/VBoxContainer" unique_id=660252450]
+layout_mode = 2
+
+[node name="InputField" type="LineEdit" parent="TerminalCodigo/Panel/VBoxContainer" unique_id=350818417]
+layout_mode = 2
+placeholder_text = "Escribe aquí..."
+
+[node name="ValidarBtn" type="Button" parent="TerminalCodigo/Panel/VBoxContainer" unique_id=1791640183]
+layout_mode = 2
+text = "Validar"
+
+[node name="FeedbackLabel" type="Label" parent="TerminalCodigo/Panel/VBoxContainer" unique_id=1391133275]
+layout_mode = 2
+
+[node name="CerrarBtn" type="Button" parent="TerminalCodigo" unique_id=1423063822]
+offset_left = 180.0
+offset_top = 185.0
+offset_right = 393.0
+offset_bottom = 216.0
+grow_horizontal = 0
+text = "Cerrar"
