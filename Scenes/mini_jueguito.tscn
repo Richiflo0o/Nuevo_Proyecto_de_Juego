@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b30kt6e2qdrn6"]
+
+[ext_resource type="PackedScene" uid="uid://brw5f4gv3vj4x" path="res://Scenes/nivel_002.tscn" id="2_1txj2"]
+[ext_resource type="PackedScene" uid="uid://br0i61u8burou" path="res://Scenes/caracol.tscn" id="2_bddp5"]
+[ext_resource type="Script" uid="uid://dr57rs7r74v2a" path="res://Script/caracolvinculacion.gd" id="3_bddp5"]
+
+[node name="Mini_Jueguito" type="Node2D" unique_id=1565564173]
+
+[node name="Nivel_002" parent="." unique_id=386553954 instance=ExtResource("2_1txj2")]
+
+[node name="Caracol_movimiento" type="Node2D" parent="." unique_id=1276209897]
+
+[node name="caracol" parent="Caracol_movimiento" unique_id=764143843 instance=ExtResource("2_bddp5")]
+position = Vector2(543, 632)
+scale = Vector2(3, 3)
+
+[node name="caracol2" parent="Caracol_movimiento" unique_id=516564950 instance=ExtResource("2_bddp5")]
+position = Vector2(1062, 633)
+scale = Vector2(3, 3)
+script = ExtResource("3_bddp5")
