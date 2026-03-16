@@ -15,8 +15,7 @@ signal pregunta_lista(datos: Dictionary)
 signal error_api(mensaje: String)
 
 var _tipo_actual := ""
-var _http        : HTTPRequest
-
+var _http : HTTPRequest
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_http = HTTPRequest.new()
