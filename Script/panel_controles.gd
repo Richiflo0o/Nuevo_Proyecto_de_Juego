@@ -10,7 +10,7 @@
 
 extends CanvasLayer
 
-const TIEMPO_VISIBLE  := 5.0   # segundos antes de empezar a desaparecer
+const TIEMPO_VISIBLE  := 10.0   # segundos antes de empezar a desaparecer
 const TIEMPO_FADE_OUT := 1.2   # duración del fade out
 
 @onready var _panel : Panel = $Panel

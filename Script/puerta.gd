@@ -9,7 +9,7 @@
 
 extends StaticBody2D
 
-const ESCENA_DESTINO := "res://Scenes/laberinto.tscn"
+const ESCENA_DESTINO := "res://Scenes/Salas/laberinto.tscn"
 
 var _abierta := false
 
@@ -45,5 +45,4 @@ func abrir() -> void:
 func interactuar() -> void:
 	if not _abierta:
 		return
-	GameManager.sala_actual = 1  # marcar que vamos al laberinto
-	get_tree().change_scene_to_file(ESCENA_DESTINO)
+	GameManager.avanzar_sala()

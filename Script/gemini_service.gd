@@ -15,8 +15,7 @@ signal pregunta_lista(datos: Dictionary)
 signal error_api(mensaje: String)
 
 var _tipo_actual := ""
-var _http        : HTTPRequest
-
+var _http : HTTPRequest
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_http = HTTPRequest.new()
@@ -82,8 +81,8 @@ Responde ÚNICAMENTE con este JSON exacto, sin markdown:
   "tipo": "drag",
   "pregunta": "Arrastra cada concepto a su definición correcta:",
   "pares": [
-    {"concepto": "Concepto1", "definicion": "Definición corta"},
-    {"concepto": "Concepto2", "definicion": "Definición corta"}
+	{"concepto": "Concepto1", "definicion": "Definición corta"},
+	{"concepto": "Concepto2", "definicion": "Definición corta"}
   ]
 }
 
