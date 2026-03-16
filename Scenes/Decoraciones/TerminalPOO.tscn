@@ -63,7 +63,7 @@ collision_mask = 0
 script = ExtResource("1_m5faa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779975990]
-scale = Vector2(0.01, 0.01)
+scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_5c5nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1982494565]
@@ -76,10 +76,10 @@ script = ExtResource("3_7rbib")
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 68.0
-offset_top = 5.0
-offset_right = -529.0
-offset_bottom = -321.0
+offset_left = 186.0
+offset_top = 112.0
+offset_right = -244.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_5iwva")
