@@ -521,7 +521,7 @@ tile_map_data = PackedByteArray("AADq//b/AAAGAAAAAADq//f/AAAGAAEAAADr//b/AAAHAAA
 tile_set = SubResource("TileSet_e45ie")
 
 [node name="Player" parent="." unique_id=422160145 instance=ExtResource("2_3ef07")]
-position = Vector2(-327, -127)
+position = Vector2(-280, 183)
 
 [node name="Terminal1" parent="." unique_id=457247997 instance=ExtResource("4_4upwg")]
 position = Vector2(-280, 155)
@@ -529,17 +529,14 @@ position = Vector2(-280, 155)
 [node name="Terminal2" parent="." unique_id=863317289 instance=ExtResource("4_4upwg")]
 position = Vector2(37, 119)
 leccion_id = 1
-terminal_id = "T2"
 
 [node name="Terminal3" parent="." unique_id=338796292 instance=ExtResource("4_4upwg")]
 position = Vector2(-72, 248)
 leccion_id = 2
-terminal_id = "T3"
 
 [node name="Terminal4" parent="." unique_id=1812641699 instance=ExtResource("4_4upwg")]
 position = Vector2(360, -23)
 leccion_id = 3
-terminal_id = "T4"
 
 [node name="Puerta" parent="." unique_id=2102870086 instance=ExtResource("5_6d013")]
 position = Vector2(369, 335)

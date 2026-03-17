@@ -1,21 +1,22 @@
 # terminal_codigo.gd
-# Nodo: CanvasLayer  (hijo de TerminalcodigoPOO en terminalcodigo_poo.tscn)
+# Nodo: CanvasLayer  (hijo TerminalCodigo dentro de terminalcodigo_poo.tscn)
 #
-# Usa los nodos YA EXISTENTES en la escena. Solo agrega PanelPista como nuevo.
+# ✓ NO pausa el juego — el mundo sigue corriendo
+# ✓ Bloquea solo el movimiento del jugador (player.bloqueado = true)
+# ✓ Concepto corto + ejemplo + ejercicio en UNA sola pantalla
+# ✓ [H] muestra/oculta pista en esquina superior derecha
+# ✓ [Esc] cierra  |  [Enter] valida
 #
-# Nodos existentes que usa este script:
-#   $Panel/TituloLabel          (Label)
-#   $Panel/FaseEjercicio/InstruccionLabel  (Label)
-#   $Panel/FaseEjercicio/CodigoLabel       (RichTextLabel)
-#   $Panel/FaseEjercicio/InputField        (LineEdit)
-#   $Panel/FaseEjercicio/ValidarBtn        (Button)
-#   $Panel/FaseEjercicio/FeedbackLabel     (Label)
-#   $Panel/CerrarBtn            (Button)
-#
-# Nodo NUEVO que debes agregar manualmente en Godot al Panel:
-#   $PanelPista (Panel) con hijos:
-#     - TituloLabel (Label)
-#     - ContenidoLabel (RichTextLabel)
+# Nodos de terminalcodigo_poo.tscn que usa este script:
+#   $Panel/TituloLabel
+#   $Panel/FaseExplicacion/ConceptoLabel    (Label)
+#   $Panel/FaseExplicacion/ExplicacionLabel (RichTextLabel)
+#   $Panel/FaseEjercicio/InstruccionLabel   (Label)
+#   $Panel/FaseEjercicio/CodigoLabel        (RichTextLabel)
+#   $Panel/FaseEjercicio/InputField         (LineEdit)
+#   $Panel/FaseEjercicio/ValidarBtn         (Button)
+#   $Panel/FaseEjercicio/FeedbackLabel      (Label)
+#   $Panel/CerrarBtn                        (Button)
 
 extends CanvasLayer
 
@@ -29,63 +30,79 @@ const LECCIONES := [
 	# ── Terminal 1: Clases ───────────────────────────────────────────────────
 	{
 		"titulo":      "> TERMINAL_01 — Clases",
-		"instruccion": "Define la clase Vehiculo:",
-		"codigo":
-			"[color=yellow]___[/color] Vehiculo\n{\n    public string marca;\n    public int velocidad;\n}",
-		"respuesta":    "class",
-		"pista_titulo": "💡 Clases en C#",
-		"pista":
-			"Una [b]clase[/b] es una plantilla.\n\n"
-			+ "[color=gray]// Ejemplo:[/color]\n"
-			+ "[color=cyan]class[/color] [color=yellow]Personaje[/color] {\n"
-			+ "    public string nombre;\n"
+		"concepto":    "Una CLASE es una plantilla que define atributos y métodos.\nComo el plano de un edificio: describe su estructura.",
+		"ejemplo":
+			"[color=cyan]class[/color] [color=yellow]Personaje[/color] {\n"
+			+ "    [color=cyan]public string[/color] nombre;\n"
+			+ "    [color=cyan]public int[/color] vida;\n"
 			+ "}",
+		"instruccion": "Completa: define la clase Vehiculo",
+		"codigo":
+			"[color=yellow]___[/color] Vehiculo {\n"
+			+ "    public string marca;\n"
+			+ "}",
+		"respuesta":    "class",
+		"pista_titulo": "💡 Pista",
+		"pista":        "Palabra clave en C# para definir una clase: [b]class[/b]",
 	},
 	# ── Terminal 2: Objetos ──────────────────────────────────────────────────
 	{
 		"titulo":      "> TERMINAL_02 — Objetos",
-		"instruccion": "Crea un objeto de la clase Vehiculo:",
-		"codigo":
-			"Vehiculo miAuto = [color=yellow]___[/color] Vehiculo();",
+		"concepto":    "Un OBJETO es una instancia concreta de una clase.\nSi la clase es el plano, el objeto es el edificio construido.",
+		"ejemplo":
+			"[color=yellow]Personaje[/color] heroe = [color=cyan]new[/color] [color=yellow]Personaje[/color]();\n"
+			+ "heroe.nombre = [color=green]\"Compilador\"[/color];\n"
+			+ "heroe.vida   = [color=orange]100[/color];",
+		"instruccion": "Completa: crea un objeto de la clase Vehiculo",
+		"codigo":      "Vehiculo miAuto = [color=yellow]___[/color] Vehiculo();",
 		"respuesta":    "new",
-		"pista_titulo": "💡 Objetos en C#",
-		"pista":
-			"Un [b]objeto[/b] es una instancia de una clase.\n\n"
-			+ "[color=gray]// Ejemplo:[/color]\n"
-			+ "[color=yellow]Personaje[/color] p = [color=cyan]new[/color] [color=yellow]Personaje[/color]();\n"
-			+ "p.nombre = [color=green]\"Héroe\"[/color];",
+		"pista_titulo": "💡 Pista",
+		"pista":        "Para crear un objeto en C# se usa: [b]new[/b]",
 	},
 	# ── Terminal 3: Atributos ────────────────────────────────────────────────
 	{
 		"titulo":      "> TERMINAL_03 — Atributos",
-		"instruccion": "Declara el atributo privado _combustible:",
+		"concepto":    "Los ATRIBUTOS son las variables de una clase.\nUsar [b]private[/b] los protege (solo accesibles desde dentro).",
+		"ejemplo":
+			"[color=cyan]class[/color] [color=yellow]Personaje[/color] {\n"
+			+ "    [color=red]private int[/color] _vida;     [color=gray]// privado[/color]\n"
+			+ "    [color=cyan]public string[/color] nombre; [color=gray]// público[/color]\n"
+			+ "}",
+		"instruccion": "Completa: declara el atributo privado _combustible",
 		"codigo":
-			"class Vehiculo\n{\n    [color=yellow]___[/color] float _combustible;\n}",
+			"class Vehiculo {\n"
+			+ "    [color=yellow]___[/color] float _combustible;\n"
+			+ "}",
 		"respuesta":    "private",
-		"pista_titulo": "💡 Atributos privados",
-		"pista":
-			"[b]private[/b] oculta el atributo.\n\n"
-			+ "[color=gray]// Convención: guion bajo[/color]\n"
-			+ "[color=red]private[/color] int _vida;\n"
-			+ "[color=red]private[/color] string _nombre;",
+		"pista_titulo": "💡 Pista",
+		"pista":        "Modificador para ocultar un atributo: [b]private[/b]",
 	},
 	# ── Terminal 4: Métodos ──────────────────────────────────────────────────
 	{
 		"titulo":      "> TERMINAL_04 — Métodos",
-		"instruccion": "Completa el tipo de retorno del método Avanzar:",
+		"concepto":    "Los MÉTODOS son las acciones que puede hacer un objeto.\nUn método que no devuelve nada usa el tipo [b]void[/b].",
+		"ejemplo":
+			"[color=cyan]class[/color] [color=yellow]Personaje[/color] {\n"
+			+ "    [color=cyan]public void[/color] Atacar() {\n"
+			+ "        Console.WriteLine([color=green]\"¡Ataque!\"[/color]);\n"
+			+ "    }\n"
+			+ "}",
+		"instruccion": "Completa: el tipo de retorno del método Avanzar",
 		"codigo":
-			"public [color=yellow]___[/color] Avanzar()\n{\n    Console.WriteLine(\"Avanzando...\");\n}",
+			"public [color=yellow]___[/color] Avanzar() {\n"
+			+ "    Console.WriteLine(\"Avanzando...\");\n"
+			+ "}",
 		"respuesta":    "void",
-		"pista_titulo": "💡 Métodos en C#",
-		"pista":
-			"[b]void[/b] = no devuelve nada.\n\n"
-			+ "public [color=cyan]void[/color] Atacar() { ... }\n"
-			+ "public [color=cyan]int[/color] ObtenerVida() { ... }",
+		"pista_titulo": "💡 Pista",
+		"pista":        "Tipo de retorno cuando un método no devuelve nada: [b]void[/b]",
 	},
 ]
 
-# ── Nodos existentes en la escena ─────────────────────────────────────────────
+# ── Nodos existentes ──────────────────────────────────────────────────────────
 @onready var _titulo_label   : Label         = $Panel/TituloLabel
+@onready var _fase_exp       : VBoxContainer = $Panel/FaseExplicacion
+@onready var _concepto_label : Label         = $Panel/FaseExplicacion/ConceptoLabel
+@onready var _ejemplo_label  : RichTextLabel = $Panel/FaseExplicacion/ExplicacionLabel
 @onready var _instruccion    : Label         = $Panel/FaseEjercicio/InstruccionLabel
 @onready var _codigo         : RichTextLabel = $Panel/FaseEjercicio/CodigoLabel
 @onready var _input_field    : LineEdit      = $Panel/FaseEjercicio/InputField
@@ -93,11 +110,10 @@ const LECCIONES := [
 @onready var _feedback       : Label         = $Panel/FaseEjercicio/FeedbackLabel
 @onready var _cerrar_btn     : Button        = $Panel/CerrarBtn
 
-# ── Nodo nuevo (agrégalo al Panel en Godot) ───────────────────────────────────
-# Si no existe, las pistas simplemente no aparecen (no rompe nada)
-@onready var _panel_pista    : Panel         = get_node_or_null("Panel/PanelPista")
-@onready var _pista_titulo   : Label         = get_node_or_null("Panel/PanelPista/TituloLabel")
-@onready var _pista_contenido: RichTextLabel = get_node_or_null("Panel/PanelPista/ContenidoLabel")
+# ── Nodo opcional para pista ──────────────────────────────────────────────────
+@onready var _panel_pista     = get_node_or_null("Panel/PanelPista")
+@onready var _pista_titulo    = get_node_or_null("Panel/PanelPista/TituloLabel")
+@onready var _pista_contenido = get_node_or_null("Panel/PanelPista/ContenidoLabel")
 
 @export var leccion_id : int = 0
 
@@ -105,18 +121,27 @@ var _leccion       : Dictionary = {}
 var _resuelta      := false
 var _validando     := false
 var _pista_visible := false
+var _jugador       : CharacterBody2D = null  # referencia cacheada al player
+# Acciones de movimiento cuyos eventos WASD se eliminan temporalmente al abrir
+# Teclas que se deben remover de TODAS las acciones al escribir en la terminal
+# KEY_A=65 KEY_D=68 KEY_W=87 KEY_S=83 KEY_E=69
+const _KEYCODES_TEXTO := [KEY_A, KEY_D, KEY_W, KEY_S, KEY_E]
+var _eventos_removidos : Array = []  # Array de {accion, evento}
 
 # ── Ciclo de vida ─────────────────────────────────────────────────────────────
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 
-	# Ocultar fases antiguas si existen en la escena
-	var fase_exp = get_node_or_null("Panel/FaseExplicacion")
-	if fase_exp:
-		fase_exp.visible = false
+	# Ocultar botón "Entendido → Practicar" si existe
+	var continuar_btn = get_node_or_null("Panel/FaseExplicacion/ContinuarBtn")
+	if continuar_btn:
+		continuar_btn.visible = false
 
-	# Posicionar panel pista en esquina superior derecha
+	# Mostrar ambas fases juntas desde el inicio
+	if _fase_exp:
+		_fase_exp.visible = true
+
 	if _panel_pista:
 		_posicionar_pista()
 		_panel_pista.visible = false
@@ -144,6 +169,52 @@ func _posicionar_pista() -> void:
 		MARGEN
 	))
 
+# ── Buscar jugador en el árbol ────────────────────────────────────────────────
+func _obtener_jugador() -> CharacterBody2D:
+	if _jugador and is_instance_valid(_jugador):
+		return _jugador
+	# Buscar por grupo "jugador" (definido en Player.tscn)
+	var jugadores := get_tree().get_nodes_in_group("jugador")
+	if jugadores.is_empty():
+		# Fallback: buscar por grupo "Player"
+		jugadores = get_tree().get_nodes_in_group("Player")
+	if not jugadores.is_empty():
+		_jugador = jugadores[0]
+	return _jugador
+
+# ── Quitar/restaurar eventos WASD del InputMap ───────────────────────────────
+func _quitar_wasd() -> void:
+	# Recorre TODAS las acciones del InputMap y elimina cualquier evento
+	# que use las teclas de texto (A, W, S, D, E)
+	_eventos_removidos.clear()
+	var todas_acciones := InputMap.get_actions()
+	for accion in todas_acciones:
+		var events := InputMap.action_get_events(accion)
+		for ev in events:
+			if ev is InputEventKey:
+				var kc : int = ev.physical_keycode if ev.physical_keycode != 0 else ev.keycode
+				if kc in _KEYCODES_TEXTO:
+					InputMap.action_erase_event(accion, ev)
+					_eventos_removidos.append({"accion": accion, "evento": ev})
+
+func _restaurar_wasd() -> void:
+	for entrada in _eventos_removidos:
+		InputMap.action_add_event(entrada["accion"], entrada["evento"])
+	_eventos_removidos.clear()
+
+func _bloquear_jugador(bloquear: bool) -> void:
+	var p := _obtener_jugador()
+	if not p:
+		return
+	if bloquear:
+		p.velocity = Vector2.ZERO
+		p.move_and_slide()
+		p.set_physics_process(false)
+		p.set_process_unhandled_input(false)
+	else:
+		p.set_physics_process(true)
+		p.set_process_unhandled_input(true)
+
 # ── API pública ───────────────────────────────────────────────────────────────
 func abrir() -> void:
 	if _resuelta:
@@ -151,20 +222,22 @@ func abrir() -> void:
 	_leccion = LECCIONES[clamp(leccion_id, 0, LECCIONES.size() - 1)]
 	_poblar_ui()
 	visible = true
-	# NO pausa el juego
+	_bloquear_jugador(true)
+	_quitar_wasd()            # ← WASD disponibles para escribir
 	_input_field.grab_focus()
 
 func _poblar_ui() -> void:
-	_titulo_label.text          = _leccion["titulo"]
-	_instruccion.text           = _leccion["instruccion"]
-	_codigo.text                = "[font_size=13]" + _leccion["codigo"] + "[/font_size]"
-	_input_field.text           = ""
-	_input_field.placeholder_text = "Escribe aquí... [H] pista  [Esc] cerrar"
-	_feedback.text              = ""
-	_validar_btn.disabled       = false
-	_input_field.editable       = true
+	_titulo_label.text            = _leccion["titulo"]
+	_concepto_label.text          = _leccion["concepto"]
+	_ejemplo_label.text           = "[font_size=12]" + _leccion["ejemplo"] + "[/font_size]"
+	_instruccion.text             = _leccion["instruccion"]
+	_codigo.text                  = "[font_size=13]" + _leccion["codigo"] + "[/font_size]"
+	_input_field.text             = ""
+	_input_field.placeholder_text = "Escribe aquí...   [H] pista   [Esc] cerrar"
+	_feedback.text                = ""
+	_validar_btn.disabled         = false
+	_input_field.editable         = true
 
-	# Cargar pista si el panel existe
 	if _pista_titulo:
 		_pista_titulo.text = _leccion["pista_titulo"]
 	if _pista_contenido:
@@ -206,7 +279,7 @@ func _validar_con_ia(respuesta: String) -> void:
 	var prompt := (
 		"Valida si esta respuesta de C# es correcta.\n"
 		+ "Ejercicio: %s\nEsperado: '%s'\nRespuesta: '%s'\n"
-		+ "Responde SOLO con JSON sin markdown: "
+		+ "Responde SOLO con JSON sin texto extra ni markdown: "
 		+ "{\"correcto\": true/false, \"explicacion\": \"frase corta en español\"}"
 	) % [_leccion["instruccion"], _leccion["respuesta"], respuesta]
 
@@ -241,7 +314,7 @@ func _on_ia_respuesta(result: int, code: int, body: PackedByteArray, respuesta: 
 		return
 
 	var contenido : String = json["choices"][0]["message"]["content"]
-	contenido = contenido.strip_edges().replace("```json","").replace("```","").strip_edges()
+	contenido = _extraer_json_str(contenido)
 	var datos = JSON.parse_string(contenido)
 	if not datos or not datos.has("correcto"):
 		_validar_local(respuesta)
@@ -249,11 +322,19 @@ func _on_ia_respuesta(result: int, code: int, body: PackedByteArray, respuesta: 
 
 	_aplicar_resultado(datos["correcto"], datos.get("explicacion", ""))
 
+func _extraer_json_str(texto: String) -> String:
+	var limpio := texto.strip_edges().replace("```json", "").replace("```", "").strip_edges()
+	var inicio := limpio.find("{")
+	var fin    := limpio.rfind("}")
+	if inicio != -1 and fin > inicio:
+		return limpio.substr(inicio, fin - inicio + 1)
+	return limpio
+
 func _validar_local(respuesta: String) -> void:
 	var esperada := (_leccion["respuesta"] as String).strip_edges().to_lower()
 	var dada     := respuesta.strip_edges().to_lower()
 	var correcto := (dada == esperada)
-	var msg : String = "✓ ¡Correcto!" if correcto else ("✗ Incorrecto.  [H] para ver la pista")
+	var msg : String = "✓ ¡Correcto!" if correcto else "✗ Incorrecto.   Pulsa [H] para ver la pista."
 	_aplicar_resultado(correcto, msg)
 
 func _aplicar_resultado(correcto: bool, explicacion: String) -> void:
@@ -277,5 +358,7 @@ func _aplicar_resultado(correcto: bool, explicacion: String) -> void:
 
 func _cerrar() -> void:
 	visible = false
+	_restaurar_wasd()          # ← restaurar movimiento WASD
+	_bloquear_jugador(false)
 	if _panel_pista:
 		_panel_pista.visible = false
